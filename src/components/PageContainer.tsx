@@ -8,7 +8,7 @@ type PageContainerProps = {
 export default function PageContainer({ children }: PageContainerProps) {
     return (
         <>
-            <div className="font-dmsans grid grid-rows-[120px_50%_1fr] gap-4 h-screen max-w-screen-md mx-auto">
+            <div className="mx-auto grid grid-rows-[120px_50%_1fr] gap-4 h-screen">
                 {children ? children : (
                     <>
                         <div className="bg-red-300">Row 1 — 120px</div>
