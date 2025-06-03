@@ -1,33 +1,54 @@
-**FRAMEWORKS 1**
+# React + TypeScript + Vite
 
-# Log ind opgave
-### **Opgaven indeholder følgende filer:**
-- en figma fil (i assets mappen)
-- svg filer til illustrationer (i assets mappen)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### **Opgavebeskrivelse**
-- Brug Vite til at installere en react applikation.
-  (BENSPÆND: Mappen skal være tom, når du laver en ny vite app. Du får mulighed for at ignorere de filer som ligger i mappen, men dette VIL overskrive denne readme fil. Du kan med fordel omdøbe den til fx. opgave.md)
-- du kan bruge `npm create vite@latest .` til at oprette en react app i den mappe du allerede står i uden at oprette en ny mappe.
-- Du skal bruge React Router til at navigere mellem siderne i appen.
-- Du skal implementere login-funktionalitet.
-- Du skal fetche statements og secrets fra det udleverede api.
-- Secrets siden skal være beskyttet, så du kun kan navigere til den, når du er logget ind.
-- husk at lave en branch til dit arbejde
+Currently, two official plugins are available:
 
-### **Mål**
-- Formålet med opgaven er at træne:
-  1. At bruge React Router til at lave en applikation med flere sider i.
-  2. At lave et post-request til det udleverede api, og håndtere den returnerede token.
-  3. At beskytte routes, så de kun kan vises når en bruger har et token (er logget ind).
-  
-### **Ekstraopgaver hvis du er hurtigt færdig**
-  1. Tilføj "Sign up" siden, så du også kan oprette en ny bruger.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### **API til opgaven**
-  Du kan klone api'et til opgaven her: https://github.com/rts-cmk-opgaver/frameworks1-auth-api
+## Expanding the ESLint configuration
 
-### **Husk!**
-- Commit og push ofte
-- Tænk over dine commit-beskeder. Din commit historik må gerne afspejle udviklingen i dit projekt med små beskrivelser. 
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
