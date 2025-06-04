@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import LandingPage from '../views/LandingPage';
 import Login from '../views/Login';
-import SignUp from '../views/SignUp';
+import Signup from '../views/SignUp';
 
 
 export const router = createBrowserRouter([
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <SignUp />,
+    element: <Signup />,
   },
 ]);
 

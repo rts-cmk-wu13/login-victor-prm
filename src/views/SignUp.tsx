@@ -1,11 +1,16 @@
-export default function SignUp() {
+import PageContainer from "../components/PageContainer"
+import Header from "../components/HeaderComp/Header"
+import SignupMain from "../components/SignupComp/SignupMain"
+import SignupBottom from "../components/SignupComp/SignUpBottom"
 
-
+export default function Signup() {
   return (
     <>
-      <h1 className="text-6xl font-bold underline bg-red-400">
-       Sign Up
-      </h1>
+      <PageContainer>
+        <Header title="Signup"/>
+        <SignupMain/>
+        <SignupBottom/>
+      </PageContainer>
     </>
   )
 }
