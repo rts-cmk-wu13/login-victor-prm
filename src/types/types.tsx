@@ -13,3 +13,7 @@ export type AuthProviderProps = {
 export type PageContainerProps = {
     children?: ReactNode;
 };
+
+export type HeaderProps = {
+    title: string
+};
