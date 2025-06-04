@@ -1,9 +1,4 @@
-import type { ReactNode } from "react";
-
-type PageContainerProps = {
-    children?: ReactNode;
-};
-
+import type { PageContainerProps } from "../types/types"
 
 export default function PageContainer({ children }: PageContainerProps) {
     return (
