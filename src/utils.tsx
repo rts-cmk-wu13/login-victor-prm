@@ -1,3 +1,5 @@
+import { redirect } from "react-router";
+
 export async function fetchFromAPI(params: string) {
     const url = `http://localhost:4000/${params}`;
     //console.log(url)
@@ -6,9 +8,18 @@ export async function fetchFromAPI(params: string) {
     return res.json();
 }
 
-export async function fetchFromSecretAPI(params: string, token: string | null) {
+export function getToken() {
+    const rawToken = sessionStorage.getItem("token");
+    const token: string | null = rawToken ? JSON.parse(rawToken) : null;
+    return token;
+}
+
+export async function fetchFromSecretAPI(params: string) {
+    const token = getToken();
+
     if (!token) {
-        throw new Error("No token found!")
+        return redirect("/")
+        //throw new Error("No token found!")
     }
 
     const url = `http://localhost:4000/${params}`;
@@ -20,7 +31,7 @@ export async function fetchFromSecretAPI(params: string, token: string | null) {
             "content-type": "application/json",
             "Authorization": `Bearer ${token}`
         }
-        
+
     });
     if (!res.ok) throw new Error("Failed to fetch");
     return res.json();
