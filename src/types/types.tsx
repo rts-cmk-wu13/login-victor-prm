@@ -6,6 +6,14 @@ export type AuthContextType = {
     logout: () => void;
 };
 
+export type SecretProps = {
+    author: string;
+    id: number;
+    origin: string;
+    quote: string;
+    index: number;
+};
+
 export type AuthProviderProps = {
     children: ReactNode;
 };
