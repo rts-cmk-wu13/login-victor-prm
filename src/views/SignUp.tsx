@@ -5,6 +5,7 @@ import SignupMain from "../components/SignupComp/SignupMain"
 import SignupBottom from "../components/SignupComp/SignupBottom"
 
 export default function Signup() {
+  
   return (
     <>
       <PageContainer>

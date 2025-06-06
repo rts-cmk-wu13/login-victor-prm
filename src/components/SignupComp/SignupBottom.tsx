@@ -6,7 +6,7 @@ export default function SignupBottom() {
 
     return (
         <div className="flex flex-col gap-2">
-            <Link className={`${baseButtonClass} text-white bg-primary`} to="/login">Login <ArrowLongRightIcon className="size-5 h-auto" /></Link>
+            <button className={`${baseButtonClass} text-white bg-primary`} form="signupForm">Login <ArrowLongRightIcon className="size-5 h-auto" /></button>
             <p className="text-center">Already have an account? <Link className="text-primary" to="/login">Log in</Link></p>
         </div>
     )
